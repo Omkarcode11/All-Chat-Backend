@@ -7,7 +7,7 @@ const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 require('dotenv').config();
 
-// db.connection.sync({ force: true });
+db.connection.sync({ alter: true });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,3 +17,11 @@ app.use(router);
 app.listen(PORT, () => {
   console.log(`server running on ${PORT}`);
 });
+
+
+
+
+
+
+
+

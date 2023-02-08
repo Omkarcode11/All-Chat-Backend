@@ -4,7 +4,7 @@ const conversationController = require('./../Controller/conversation.controller'
 
 
 conversationRouter.post('/',conversationController.addConversation)
-conversationRouter.get('/:username',conversationController.getConversation)
+conversationRouter.get('/:username1/:username2',conversationController.getConversation)
 
 
 

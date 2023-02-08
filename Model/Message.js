@@ -6,6 +6,10 @@
             autoIncrement : true,
             primaryKey: true
         },
+        conversationId : {
+            type:datatypes.STRING,
+            allowNull : false
+        },
         sender: {
             type : datatypes.STRING
         },

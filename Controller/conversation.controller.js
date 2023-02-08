@@ -3,7 +3,6 @@ const db = require('./../Model/index');
 
 const addConversation = async (req, res) => {
     try{
-
         let conversation = await db.conversation.create({
             members : req.body.members
         });
@@ -18,12 +17,16 @@ const addConversation = async (req, res) => {
 
 const getConversation = async (req,res)=>{
     try{
-        const username= req.params.username
-        let conversations = await db.conversation.findAll({
+        const username1= req.params.username1
+        const username2= req.params.username2
+        let conversations = await db.conversation.findOrCreate({
           where: {
             members: {
-              [Op.substring]: 'pica',
+              [Op.and]: [{ [Op.substring]: username1 }, { [Op.substring]: username2 }],
             },
+          },
+          defaults: {
+            members: username1+","+username2,
           },
         });
         res.status(200).json(conversations)
