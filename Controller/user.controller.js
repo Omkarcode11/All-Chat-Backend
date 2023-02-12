@@ -57,5 +57,23 @@ const getUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, addUser, getUser };
+
+const getUserByUserName = async(req,res)=>{
+  try{
+
+    let username = req.params.username
+    let user = await db.user.findOne({
+      where : {
+        username : username
+      }
+    })
+    res.status(200).json(user)
+    res.end()
+  } catch(err){
+    res.status(400).json(err)
+    res.end()
+  }
+}
+
+module.exports = { getAllUsers, addUser, getUser ,getUserByUserName };
  
